@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lowest Rates Test - by Victor Huynh</title>
+    <!-- 
+        Note that all of this was done in one file due to the simple nature of the web page
+        In more complex ones, the CSS and the JS would be in separate files and then imported into the main HTML file -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .navBar {
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            top: 0px;
+            left: 0px;
+        }
+
+        #burgerMenuButton div {
+            background-color: black;
+            width: 35px;
+            height: 5px;
+            margin: 5px 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .burgerMenu {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            z-index: 10;
+            background-color: gray;
+        }
+
+        .burgerMenu ul {
+            width: 30vw;
+            margin: 0;
+            padding: 5px;
+            list-style: none;
+        }
+
+        .burgerMenu ul button {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 5vh;
+            font-size: 2vh;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-flow: wrap;
+        }
+
+        .card {
+            text-align: center;
+            min-width: 30%;
+        }
+        
+        .insuranceTypeClass button {
+            background-color: gray;
+            color: white;
+            font-weight: 700;
+            margin: 2px 2px;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                min-width: 90%;
+            }
+
+            .footerStyle {
+                display: flex;
+                flex-flow: wrap;
+            }
+
+            .footerStyle div {
+                min-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var dropDownValues = ["Close Menu", "Insurance", "Mortgage", "Home Insurance", "Life Property Insurance", "Auto and Credit Cards", "Travel Insurance"];
+        var valuesAdded = false;
+        var functionClicked = false;
+
+        function toggleMenu() {
+            var htmlString = "<ul>" + dropDownValues.map((value) => ((value === "Close Menu") ? `<button onclick=hideMenu()>${value}</button>` : `<button>${value}</button>`)).join("")  + "</ul>";
+            console.log(htmlString);
+            document.getElementById("burgerMenu").innerHTML = htmlString;
+            document.getElementById("burgerMenu").style.display = "block";
+        }
+
+        function hideMenu() {
+            resetMenu();
+            if (functionClicked) {
+                document.getElementById("topInvis").scrollIntoView();
+                functionClicked = false;
+            }
+            document.getElementById("burgerMenu").style.display = "none";
+        }
+
+        function addToMenu() {
+            if (valuesAdded) {
+                return; 
+            } else {
+                dropDownValues.push("Loans", "Finance", "Debt");
+                valuesAdded = true;
+            }
+            toggleMenu();
+        }
+
+        function resetMenu() {
+            dropDownValues.splice(7,3);
+            valuesAdded = false;
+        }
+
+        function customJSFunction() {
+            functionClicked = true;
+            document.getElementById("pageBottom").scrollIntoView();
+            addToMenu();
+            toggleMenu();
+        }
+    </script>
+    <div id="burgerMenu" class="burgerMenu"></div>
+    <nav class="navBar">
+            <button id="burgerMenuButton" style="margin: 5px 5px;" onclick=toggleMenu()>
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <h1 style="margin: auto">
+                Lowest Rates Test
+            </h1>
+            <button style="margin: 5px 5px; height: 40px; width: 60px;" onclick=customJSFunction()>
+                Login
+            </button>
+    </nav>
+
+    <!-- invisible padding so it makes up for the nav bar being absolute -->
+    <div id="topInvis" style="padding: 25px"></div>
+    <div class="cards">
+        <div class="card">
+            <img src="credit-card.png"><h3>Nice Mortgage Rates</h3><p>Come get the best mortgage rates</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Get Best Car Insurance</h3><p>Come get the best car insurance rates</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Best Home Insurance</h3><p>Come get the best home insurance rates</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Car Loans!</h3><p>Car loans here!!</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>I can't believe it's not butter!</h3><p>Seriously couldn't believe it</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>More stuff you like!</h3><p>Come get the best prices</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Only the best</h3><p>The best of the best</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>How does he do it?</h3><p>Come and figure out how!</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>From zero to hero!</h3><p>Life changing service</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Very cool stuff</h3><p>Cooler than ice</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Best thing since sliced bread!</h3><p>- says one of our customers</p>
+        </div>
+        <div class="card">
+            <img src="credit-card.png"><h3>Best service around!</h3><p>Try us and see why!</p>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <h2 style="text-align: center;">About lowestrates</h2> 
+        <figure>
+            <img src="coins-image.jpeg" style="width: 100%; height: auto;">
+            <figcaption>A glance at the savings you will have when trying lowestrates.ca</figcaption>
+        </figure>
+        <div class="about-description" style="text-align: center; margin: auto; max-width: 70vw;">
+            <h3>What is lowestrates.ca?</h3>
+            <span style="font-style: italic;">you will love it once you try it</span>
+            <p>
+                come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! come get it, best rate comparison site!! 
+            </p>
+        </div>
+    </div>
+
+    <hr>
+    <footer class="footerStyle" style="display: flex; justify-content: space-evenly;">
+        <div style="text-align: center;">
+            <h3 style="font-variant: small-caps;">All Rights Reserved</h3>
+            <p>best footer ever</p>
+            <p>&copy; Copyrights Reserved</p>
+        </div>
+
+        <div>
+            <h3 style="font-variant: small-caps;">Blogs and Articles</h3>
+            <div>
+                <img src="coins-image.jpeg" style="height: 30px; width: auto;">
+                <span>Article 1</span>
+                <p>best articles</p>
+            </div>
+            <hr>
+            <div>
+                <img src="coins-image.jpeg" style="height: 30px; width: auto;">
+                <span>Article 2</span>
+                <p>same good stuff</p>
+            </div>
+        </div>
+        
+        <div id="pageBottom" style="height: 200px; text-align: center; max-width: 25vh;">
+            <h3>Insurance Types</h3>
+            <span class="insuranceTypeClass">
+                <div>
+                    <button>home</button><button>auto</button><button>car</button><button>Toronto</button><button>Ontario</button><button>Mortgage</button><button>insurance</button><button>car loans</button>
+                    <button>car loans</button><button>life insurance</button><button>snow bird travel insurance</button><button>some long category test list list list list</button><button>finance</button>
+                    <button>lowestrates.ca</button><button>credit cards</button>
+                </div>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>
