@@ -5,141 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lowest Rates Test - by Victor Huynh</title>
     <!-- 
-        Note that all of this was done in one file due to the simple nature of the web page
-        In more complex ones, the CSS and the JS would be in separate files and then imported into the main HTML file -->
+        To improve the webpage: 
+        - Probably try to implement close menu by clicking outside of the page instead of just a button
+        - Try to make the side menu more modal-like, probably fade out the background while menu is up 
+    -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Roboto', sans-serif;
-        }
-        .navBar {
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            background-color: white;
-            position: fixed;
-            width: 100%;
-            height: 50px;
-            top: 0px;
-            left: 0px;
-        }
-
-        #burgerMenuButton div {
-            background-color: black;
-            width: 35px;
-            height: 5px;
-            margin: 5px 0;
-            padding: 0;
-            border: 0;
-        }
-
-        .burgerMenu {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            z-index: 10;
-            background-color: gray;
-        }
-
-        .burgerMenu ul {
-            width: 30vw;
-            margin: 0;
-            padding: 5px;
-            list-style: none;
-        }
-
-        .burgerMenu ul button {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 5vh;
-            font-size: 2vh;
-        }
-
-        .cards {
-            display: flex;
-            justify-content: center;
-            flex-flow: wrap;
-        }
-
-        .card {
-            text-align: center;
-            min-width: 30%;
-        }
-        
-        .insuranceTypeClass button {
-            background-color: gray;
-            color: white;
-            font-weight: 700;
-            margin: 2px 2px;
-        }
-
-        @media (max-width: 768px) {
-            .card {
-                min-width: 90%;
-            }
-
-            .footerStyle {
-                display: flex;
-                flex-flow: wrap;
-            }
-
-            .footerStyle div {
-                min-width: 90%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <script>
-        var dropDownValues = ["Close Menu", "Insurance", "Mortgage", "Home Insurance", "Life Property Insurance", "Auto and Credit Cards", "Travel Insurance"];
-        var valuesAdded = false;
-        var functionClicked = false;
-
-        function toggleMenu() {
-            var htmlString = "<ul>" + dropDownValues.map((value) => ((value === "Close Menu") ? `<button onclick=hideMenu()>${value}</button>` : `<button>${value}</button>`)).join("")  + "</ul>";
-            console.log(htmlString);
-            document.getElementById("burgerMenu").innerHTML = htmlString;
-            document.getElementById("burgerMenu").style.display = "block";
-        }
-
-        function hideMenu() {
-            resetMenu();
-            if (functionClicked) {
-                document.getElementById("topInvis").scrollIntoView();
-                functionClicked = false;
-            }
-            document.getElementById("burgerMenu").style.display = "none";
-        }
-
-        function addToMenu() {
-            if (valuesAdded) {
-                return; 
-            } else {
-                dropDownValues.push("Loans", "Finance", "Debt");
-                valuesAdded = true;
-            }
-            toggleMenu();
-        }
-
-        function resetMenu() {
-            dropDownValues.splice(7,3);
-            valuesAdded = false;
-        }
-
-        function customJSFunction() {
-            functionClicked = true;
-            document.getElementById("pageBottom").scrollIntoView();
-            addToMenu();
-            toggleMenu();
-        }
-    </script>
+    <script src="functions.js"></script>
     <div id="burgerMenu" class="burgerMenu"></div>
     <nav class="navBar">
             <button id="burgerMenuButton" style="margin: 5px 5px;" onclick=toggleMenu()>
@@ -155,8 +30,9 @@
             </button>
     </nav>
 
-    <!-- invisible padding so it makes up for the nav bar being absolute -->
+    <!-- invisible padding so it makes up for the nav bar being absolute, also used as a top anchor for scrolling back up -->
     <div id="topInvis" style="padding: 25px"></div>
+    <!-- cards could have been generated by javascript, but I thought it was unnecessary for this assignment, could have read from a JSON and mapped it to card objects -->
     <div class="cards">
         <div class="card">
             <img src="credit-card.png"><h3>Nice Mortgage Rates</h3><p>Come get the best mortgage rates</p>

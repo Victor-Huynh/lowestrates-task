@@ -1,0 +1,85 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+.navBar {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  top: 0px;
+  left: 0px;
+}
+
+#burgerMenuButton div {
+  background-color: black;
+  width: 35px;
+  height: 5px;
+  margin: 5px 0;
+  padding: 0;
+  border: 0;
+}
+
+.burgerMenu {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  background-color: gray;
+}
+
+.burgerMenu ul {
+  width: 30vw;
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+}
+
+.burgerMenu ul button {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 5vh;
+  font-size: 2vh;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.card {
+  text-align: center;
+  min-width: 30%;
+}
+
+.insuranceTypeClass button {
+  background-color: gray;
+  color: white;
+  font-weight: 700;
+  margin: 2px 2px;
+}
+
+/* the media queries for mobile friendliness */
+@media (max-width: 768px) {
+  .card {
+    min-width: 90%;
+  }
+
+  .footerStyle {
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  .footerStyle div {
+    min-width: 90%;
+  }
+}
