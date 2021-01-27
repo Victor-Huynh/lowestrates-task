@@ -1,5 +1,5 @@
 # LowestRates.ca task
-
+Time limit: 1 day
 
 No frameworks
 
